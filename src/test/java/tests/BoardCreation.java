@@ -1,5 +1,6 @@
 package tests;
 
+import manage.MyDataProvider;
 import model.Board;
 import model.User;
 import org.testng.Assert;
@@ -21,10 +22,10 @@ public class BoardCreation extends TestBase{
 
     }
 
-    @Test
+    @Test(dataProvider = "boardModel", dataProviderClass = MyDataProvider.class)
 
-    public void boardCreation1(){
-        Board board = new Board().withTitle("qa36");
+    public void boardCreation1(Board board){
+        //Board board = new Board().withTitle("qa36");
 
         app.getBoard().initBoardCreation();
         app.getBoard().fillInBoardCreationForm(board);
@@ -41,4 +42,5 @@ public class BoardCreation extends TestBase{
 
 
     }
+
 }
